@@ -121,19 +121,19 @@ mag_handle_t lis3mdl_magnetometers_handles[NUM_OF_MAG_SENSORS] = {
     }};
 
 /// @brief      lis3mdl magnetometer function that reads full scale configurations
-status_t lis3mdl_get_full_scale_config(const mag_handle_t *handle, lis3mdl_fs_config_t fs_setVal);
+status_t lis3mdl_set_full_scale_config(const mag_handle_t *handle,lis3mdl_fs_config_t fs_setVal);
 
 /// @brief      lis3mdl magnetometer function that writes full scale configurations
-status_t lis3mdl_set_full_scale_config(const mag_handle_t *handle,lis3mdl_fs_config_t *fs_newVal);
+status_t lis3mdl_get_full_scale_config(const mag_handle_t *handle, lis3mdl_fs_config_t *fs_newVal);
 
 /// @brief      lis3mdl magnetometer function that validates data output rate
 status_t lis3mdl_validate_outputDataRate(lis3mdl_do_rate_t val);
 
 /// @brief      lis3mdl magnetometer function that reads data output rate
-status_t lis3mdl_get_outputDataRate(lis3mdl_do_rate_t *val);
+status_t lis3mdl_get_outputDataRate(const mag_handle_t *handle, lis3mdl_do_rate_t *val);
 
 /// @brief      lis3mdl magnetometer function that sets data output rate
-status_t  lis3mdl_set_outputDataRate(lis3mdl_do_rate_t newVal);
+status_t lis3mdl_set_outputDataRate(const mag_handle_t *handle, lis3mdl_do_rate_t val);
 
 /// @brief      lis3mdl magnetometer function that controls Interrupt pin
 status_t lis3mdl_ctrl_intPinEnable(const mag_handle_t *handle,lis3mdl_cmds_t cmd);
