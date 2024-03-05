@@ -14,8 +14,18 @@
 # include <lis3mdl.h>
 
 
-/**** Set and get full scale configurations at control register 2****/
+/************************************
+ * LOCAL FUNCTION PROTOTYPES
+ ************************************/
 
+/// @brief      lis3mdl magnetometer function that validates data output rate
+status_t lis3mdl_validate_outputDataRate(lis3mdl_do_rate_t val);
+
+/************************************
+ * GLOBAL FUNCTION DEFINITIONS
+ ************************************/
+
+/**** Set and get full scale configurations at control register 2****/
 
 status_t lis3mdl_set_full_scale_config(const mag_handle_t *handle,lis3mdl_fs_config_t fs_setVal)
 {
@@ -64,156 +74,6 @@ status_t lis3mdl_get_full_scale_config(const mag_handle_t *handle, lis3mdl_fs_co
       *fs_newVal = LIS3MDL_4_GAUSS;
       break;
     }
-  }
-
-  return ret;
-}
-
-
-/**** Validate , set and get output data rates configurations at control register 1****/
-
-status_t lis3mdl_validate_outputDataRate(lis3mdl_do_rate_t val)
-{
-
-status_t ret = MEMS_SUCCESS;
-
-  switch (val)
-  {
-    case LIS3MDL_LP_Hz625:
-      val = LIS3MDL_LP_Hz625;
-      break;
-
-    case LIS3MDL_LP_1kHz:
-      val = LIS3MDL_LP_1kHz;
-      break;
-
-    case LIS3MDL_MP_560Hz:
-      val = LIS3MDL_MP_560Hz;
-      break;
-
-    case LIS3MDL_HP_300Hz:
-      val = LIS3MDL_HP_300Hz;
-      break;
-
-    case LIS3MDL_UHP_155Hz:
-      val = LIS3MDL_UHP_155Hz;
-      break;
-
-    case LIS3MDL_LP_1Hz25:
-      val = LIS3MDL_LP_1Hz25;
-      break;
-
-    case LIS3MDL_LP_2Hz5:
-      val = LIS3MDL_LP_2Hz5;
-      break;
-
-    case LIS3MDL_LP_5Hz:
-      val = LIS3MDL_LP_5Hz;
-      break;
-
-    case LIS3MDL_LP_10Hz:
-      val = LIS3MDL_LP_10Hz;
-      break;
-
-    case LIS3MDL_LP_20Hz:
-      val = LIS3MDL_LP_20Hz;
-      break;
-
-    case LIS3MDL_LP_40Hz:
-      val = LIS3MDL_LP_40Hz;
-      break;
-
-    case LIS3MDL_LP_80Hz:
-      val = LIS3MDL_LP_80Hz;
-      break;
-
-    case LIS3MDL_MP_1Hz25:
-      val = LIS3MDL_MP_1Hz25;
-      break;
-
-    case LIS3MDL_MP_2Hz5:
-      val = LIS3MDL_MP_2Hz5;
-      break;
-
-    case LIS3MDL_MP_5Hz:
-      val = LIS3MDL_MP_5Hz;
-      break;
-
-    case LIS3MDL_MP_10Hz:
-      val = LIS3MDL_MP_10Hz;
-      break;
-
-    case LIS3MDL_MP_20Hz:
-      val = LIS3MDL_MP_20Hz;
-      break;
-
-    case LIS3MDL_MP_40Hz:
-      val = LIS3MDL_MP_40Hz;
-      break;
-
-    case LIS3MDL_MP_80Hz:
-      val = LIS3MDL_MP_80Hz;
-      break;
-
-    case LIS3MDL_HP_1Hz25:
-      val = LIS3MDL_HP_1Hz25;
-      break;
-
-    case LIS3MDL_HP_2Hz5:
-      val = LIS3MDL_HP_2Hz5;
-      break;
-
-    case LIS3MDL_HP_5Hz:
-      val = LIS3MDL_HP_5Hz;
-      break;
-
-    case LIS3MDL_HP_10Hz:
-      val = LIS3MDL_HP_10Hz;
-      break;
-
-    case LIS3MDL_HP_20Hz:
-      val = LIS3MDL_HP_20Hz;
-      break;
-
-    case LIS3MDL_HP_40Hz:
-      val = LIS3MDL_HP_40Hz;
-      break;
-
-    case LIS3MDL_HP_80Hz:
-      val = LIS3MDL_HP_80Hz;
-      break;
-
-    case LIS3MDL_UHP_1Hz25:
-      val = LIS3MDL_UHP_1Hz25;
-      break;
-
-    case LIS3MDL_UHP_2Hz5:
-      val = LIS3MDL_UHP_2Hz5;
-      break;
-
-    case LIS3MDL_UHP_5Hz:
-      val = LIS3MDL_UHP_5Hz;
-      break;
-
-    case LIS3MDL_UHP_10Hz:
-      val = LIS3MDL_UHP_10Hz;
-      break;
-
-    case LIS3MDL_UHP_20Hz:
-      val = LIS3MDL_UHP_20Hz;
-      break;
-
-    case LIS3MDL_UHP_40Hz:
-      val = LIS3MDL_UHP_40Hz;
-      break;
-
-    case LIS3MDL_UHP_80Hz:
-      val = LIS3MDL_UHP_80Hz;
-      break;
-
-    default:
-      ret = INVALID_VAL;
-      break;
   }
 
   return ret;
@@ -390,6 +250,158 @@ status_t lis3mdl_write_reg( mag_write_t write_reg_if, uint8_t mag_write_addr, ui
   return ret;
 }
 
+/************************************
+ * LOCAL FUNCTION DEFINITIONS
+ ************************************/
+
+/**** Validate , set and get output data rates configurations at control register 1****/
+
+status_t lis3mdl_validate_outputDataRate(lis3mdl_do_rate_t val)
+{
+
+status_t ret = MEMS_SUCCESS;
+
+  switch (val)
+  {
+    case LIS3MDL_LP_Hz625:
+      val = LIS3MDL_LP_Hz625;
+      break;
+
+    case LIS3MDL_LP_1kHz:
+      val = LIS3MDL_LP_1kHz;
+      break;
+
+    case LIS3MDL_MP_560Hz:
+      val = LIS3MDL_MP_560Hz;
+      break;
+
+    case LIS3MDL_HP_300Hz:
+      val = LIS3MDL_HP_300Hz;
+      break;
+
+    case LIS3MDL_UHP_155Hz:
+      val = LIS3MDL_UHP_155Hz;
+      break;
+
+    case LIS3MDL_LP_1Hz25:
+      val = LIS3MDL_LP_1Hz25;
+      break;
+
+    case LIS3MDL_LP_2Hz5:
+      val = LIS3MDL_LP_2Hz5;
+      break;
+
+    case LIS3MDL_LP_5Hz:
+      val = LIS3MDL_LP_5Hz;
+      break;
+
+    case LIS3MDL_LP_10Hz:
+      val = LIS3MDL_LP_10Hz;
+      break;
+
+    case LIS3MDL_LP_20Hz:
+      val = LIS3MDL_LP_20Hz;
+      break;
+
+    case LIS3MDL_LP_40Hz:
+      val = LIS3MDL_LP_40Hz;
+      break;
+
+    case LIS3MDL_LP_80Hz:
+      val = LIS3MDL_LP_80Hz;
+      break;
+
+    case LIS3MDL_MP_1Hz25:
+      val = LIS3MDL_MP_1Hz25;
+      break;
+
+    case LIS3MDL_MP_2Hz5:
+      val = LIS3MDL_MP_2Hz5;
+      break;
+
+    case LIS3MDL_MP_5Hz:
+      val = LIS3MDL_MP_5Hz;
+      break;
+
+    case LIS3MDL_MP_10Hz:
+      val = LIS3MDL_MP_10Hz;
+      break;
+
+    case LIS3MDL_MP_20Hz:
+      val = LIS3MDL_MP_20Hz;
+      break;
+
+    case LIS3MDL_MP_40Hz:
+      val = LIS3MDL_MP_40Hz;
+      break;
+
+    case LIS3MDL_MP_80Hz:
+      val = LIS3MDL_MP_80Hz;
+      break;
+
+    case LIS3MDL_HP_1Hz25:
+      val = LIS3MDL_HP_1Hz25;
+      break;
+
+    case LIS3MDL_HP_2Hz5:
+      val = LIS3MDL_HP_2Hz5;
+      break;
+
+    case LIS3MDL_HP_5Hz:
+      val = LIS3MDL_HP_5Hz;
+      break;
+
+    case LIS3MDL_HP_10Hz:
+      val = LIS3MDL_HP_10Hz;
+      break;
+
+    case LIS3MDL_HP_20Hz:
+      val = LIS3MDL_HP_20Hz;
+      break;
+
+    case LIS3MDL_HP_40Hz:
+      val = LIS3MDL_HP_40Hz;
+      break;
+
+    case LIS3MDL_HP_80Hz:
+      val = LIS3MDL_HP_80Hz;
+      break;
+
+    case LIS3MDL_UHP_1Hz25:
+      val = LIS3MDL_UHP_1Hz25;
+      break;
+
+    case LIS3MDL_UHP_2Hz5:
+      val = LIS3MDL_UHP_2Hz5;
+      break;
+
+    case LIS3MDL_UHP_5Hz:
+      val = LIS3MDL_UHP_5Hz;
+      break;
+
+    case LIS3MDL_UHP_10Hz:
+      val = LIS3MDL_UHP_10Hz;
+      break;
+
+    case LIS3MDL_UHP_20Hz:
+      val = LIS3MDL_UHP_20Hz;
+      break;
+
+    case LIS3MDL_UHP_40Hz:
+      val = LIS3MDL_UHP_40Hz;
+      break;
+
+    case LIS3MDL_UHP_80Hz:
+      val = LIS3MDL_UHP_80Hz;
+      break;
+
+    default:
+      ret = INVALID_VAL;
+      break;
+  }
+
+  return ret;
+}
 
 
 

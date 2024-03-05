@@ -16,14 +16,21 @@
 # include <stdint.h>
 # include <lis3mdl_reg.h>
 
+/************************************
+ * MACROS AND DEFINES
+ ************************************/
+# define NUM_OF_MAG_SENSORS (2) // Assume we have 2 Magenotmer Sensors
+
+/************************************
+ * TYPEDEFS
+ ************************************/
+
 typedef signed char int8_t;
 typedef unsigned char   uint8_t;
 typedef short  int16_t;
 typedef unsigned short  uint16_t;
 typedef int  int32_t;
 typedef unsigned   uint32_t;
-
-# define NUM_OF_MAG_SENSORS (2) // Assume we have 2 Magenotmer Sensors
 
 typedef enum
 {
@@ -120,14 +127,15 @@ mag_handle_t lis3mdl_magnetometers_handles[NUM_OF_MAG_SENSORS] = {
         .sensor_write_addr = 0xFF,
     }};
 
+/************************************
+ * GLOBAL FUNCTION PROTOTYPES
+ ************************************/
+
 /// @brief      lis3mdl magnetometer function that reads full scale configurations
 status_t lis3mdl_set_full_scale_config(const mag_handle_t *handle,lis3mdl_fs_config_t fs_setVal);
 
 /// @brief      lis3mdl magnetometer function that writes full scale configurations
 status_t lis3mdl_get_full_scale_config(const mag_handle_t *handle, lis3mdl_fs_config_t *fs_newVal);
-
-/// @brief      lis3mdl magnetometer function that validates data output rate
-status_t lis3mdl_validate_outputDataRate(lis3mdl_do_rate_t val);
 
 /// @brief      lis3mdl magnetometer function that reads data output rate
 status_t lis3mdl_get_outputDataRate(const mag_handle_t *handle, lis3mdl_do_rate_t *val);

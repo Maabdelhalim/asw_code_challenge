@@ -15,6 +15,9 @@
  ************************************/
 # include <stdint.h>
 
+/************************************
+ * MACROS AND DEFINES
+ ************************************/
 
 /************** Sensor I2C Write Address *****************/
 
@@ -61,6 +64,16 @@
 #define LIS3MDL_INT_THS_L       0x32U
 #define LIS3MDL_INT_THS_H       0x33U
 
+/************** Sensitivity Values *****************/
+#define LIS3MDL_SENSITIVITY_FOR_FS_4G 0.14  /**< Sensitivity for 4 gauss full scale [LSB/gauss] */
+#define LIS3MDL_SENSITIVITY_FOR_FS_8G 0.29  /**< Sensitivity for 8 gauss full scale [LSB/gauss] */
+#define LIS3MDL_SENSITIVITY_FOR_FS_12G 0.43 /**< Sensitivity for 12 gauss full scale [LSB/gauss] */
+#define LIS3MDL_SENSITIVITY_FOR_FS_16G 0.58  /**< Sensitivity for 16 gauss full scale [LSB/gauss] */
+
+
+/************************************
+ * TYPEDEFS
+ ************************************/
 
 /* Control Regsiter 1 Bits Mapping */
 typedef struct
@@ -161,11 +174,5 @@ typedef enum{
   LIS3MDL_12_GAUSS  = 2,
   LIS3MDL_16_GAUSS  = 3,
 } lis3mdl_fs_config_t;
-
-/* Sensitivity Values ----------------------------------------*/
-#define LIS3MDL_SENSITIVITY_FOR_FS_4G 0.14  /**< Sensitivity  for 4 gauss full scale [LSB/gauss] */
-#define LIS3MDL_SENSITIVITY_FOR_FS_8G 0.29  /**< Sensitivity  for 8 gauss full scale [LSB/gauss] */
-#define LIS3MDL_SENSITIVITY_FOR_FS_12G 0.43 /**< Sensitivity  for 12 gauss full scale [LSB/gauss] */
-#define LIS3MDL_SENSITIVITY_FOR_FS_16G 0.58  /**< Sensitivity  for 16 gauss full scale [LSB/gauss] */
 
 #endif // LIS3MDL_REG_H_
