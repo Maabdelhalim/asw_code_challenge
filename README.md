@@ -31,4 +31,20 @@ This is not a closed book assessment.
 If you have time, answer the following questions:
 - What changes you would make to this interfaces for use in an RTOS
 environment?
+    - Handling System Tasks According to the Following:
+        - Create two tasks one for sensor communication and the 2nd task for measurement processing where the two tasks will have-inter task communication.
+        - Communication task will be invoked by interrupt context when new generation occurs, then after communication task finishes, will invoke metering task to process readings.
+        - Use circular queue per every magnetometer instance to handled processing multiple readings if continuous mode is configured assuming data reading rate is higher than processing rate.
+        - Measurement data shall be protected during reading or writing by critical sections using semaphores or mutex.
+
+
 - How might the I2C API be improved
+    - I- Add Bus Busy Error handling that may occurs if there are multi master multi-slave when two masters are trying to hold the bus at the same time or when another master is busy communicating with a salve
+
+    - II- Add Timeout Error handling because of the following reasons might occur:
+        - 1-	clock stretching due to salve that device holding the SCL line low to pause bus communication to allow more time to handle data or prepare a response for the master device
+        - 2-	In the case of multi master multi-slave, bits arbitration takes place on the bus that might delays repones from master
+
+    - II- Avoid I2C Addresss conflict between two lis3mdl sensors:
+        - To avoid I2C addresses conflict between two lis3mdl magnetometer sensors, we can change configurations of SDO/SA1 pin high and low to have difference I2C read and write addresses as explained in the datasheet [Table 10. SAD+read/write patterns] page 12.
+

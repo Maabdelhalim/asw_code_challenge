@@ -5,19 +5,19 @@
 
 typedef enum {
     STATUS_OK,
-    STATUS_ERROR
+    STATUS_ERROR,
+    STATUS_BUSY,
+    STATUS_TIMEOUT,
+    STATUS_INVALID_TRANS
 } status_t;
 
-status_t i2c_read(
-    uint8_t bus_address,
-    uint8_t register_address,
-    uint16_t length,
-    uint8_t *buffer);
 
-status_t i2c_write(
-    uint8_t bus_address,
-    uint8_t register_address,
-    uint16_t length,
-    uint8_t *buffer);
+status_t i2c_sendByte(uint8_t byte);
+
+status_t i2c_write(uint8_t bus_address,uint8_t register_address,uint16_t length,uint8_t *buffer);
+
+status_t i2c_ReadByte(uint8_t *byte);
+
+status_t i2c_read(uint8_t bus_address,uint8_t register_address,uint16_t length,uint8_t *buffer);
 
 #endif
