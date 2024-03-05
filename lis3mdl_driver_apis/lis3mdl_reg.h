@@ -7,9 +7,12 @@
  * @brief   header file for lis3mdl.h regsiters mapping.
  ********************************************************************************
  */
-#ifndef LIS3MDL_REG_H
-#define LIS3MDL_REG_H
+#ifndef LIS3MDL_REG_H_
+#define LIS3MDL_REG_H_
 
+/************************************
+ * INCLUDES
+ ************************************/
 # include <stdint.h>
 
 
@@ -165,4 +168,4 @@ typedef enum{
 #define LIS3MDL_SENSITIVITY_FOR_FS_12G 0.43 /**< Sensitivity  for 12 gauss full scale [LSB/gauss] */
 #define LIS3MDL_SENSITIVITY_FOR_FS_16G 0.58  /**< Sensitivity  for 16 gauss full scale [LSB/gauss] */
 
-#endif // LIS3MDL_REG_H
+#endif // LIS3MDL_REG_H_

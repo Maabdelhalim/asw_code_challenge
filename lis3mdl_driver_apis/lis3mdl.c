@@ -7,13 +7,17 @@
  * @brief   source file for lis3mdl driver APIs definitions and instances.
  ********************************************************************************
  */
+
+/************************************
+ * INCLUDES
+ ************************************/
 # include <lis3mdl.h>
 
 
 /**** Set and get full scale configurations at control register 2****/
 
 
-status_t lis3mdl_set_full_scale_config(const mag_handle_t *handle,lis3mdl_fs_config_t val)
+status_t lis3mdl_set_full_scale_config(const mag_handle_t *handle,lis3mdl_fs_config_t fs_setVal)
 {
   lis3mdl_ctrl_reg2_t ctrl_reg2;
   status_t ret = MEMS_ERROR;
@@ -22,14 +26,14 @@ status_t lis3mdl_set_full_scale_config(const mag_handle_t *handle,lis3mdl_fs_con
 
   if (ret == MEMS_SUCCESS)
   {
-    ctrl_reg2.full_scale = (uint8_t)val;
+    ctrl_reg2.full_scale = (uint8_t)fs_setVal;
     ret = lis3mdl_write_reg(handle->write_reg_if,handle->sensor_write_addr, LIS3MDL_CTRL_REG2, (uint8_t *)&ctrl_reg2,sizeof(ctrl_reg2));
   }
 
   return ret;
 }
 
-status_t lis3mdl_get_full_scale_config(const mag_handle_t *handle, lis3mdl_fs_config_t *fs_val)
+status_t lis3mdl_get_full_scale_config(const mag_handle_t *handle, lis3mdl_fs_config_t *fs_newVal)
 {
   lis3mdl_ctrl_reg2_t ctrl_reg2;
   status_t ret = MEMS_ERROR;
@@ -41,23 +45,23 @@ status_t lis3mdl_get_full_scale_config(const mag_handle_t *handle, lis3mdl_fs_co
     switch (ctrl_reg2.full_scale)
     {
     case LIS3MDL_4_GAUSS:
-      *fs_val = LIS3MDL_4_GAUSS;
+      *fs_newVal = LIS3MDL_4_GAUSS;
       break;
 
     case LIS3MDL_8_GAUSS:
-      *fs_val = LIS3MDL_8_GAUSS;
+      *fs_newVal = LIS3MDL_8_GAUSS;
       break;
 
     case LIS3MDL_12_GAUSS:
-      *fs_val = LIS3MDL_12_GAUSS;
+      *fs_newVal = LIS3MDL_12_GAUSS;
       break;
 
     case LIS3MDL_16_GAUSS:
-      *fs_val = LIS3MDL_16_GAUSS;
+      *fs_newVal = LIS3MDL_16_GAUSS;
       break;
 
     default:
-      *fs_val = LIS3MDL_4_GAUSS;
+      *fs_newVal = LIS3MDL_4_GAUSS;
       break;
     }
   }
@@ -343,17 +347,17 @@ status_t lis3mdl_get_magnetometerMeasurments(const mag_handle_t *handle, mag_dat
 
 
     /* Get LIS3MDL actual sensitivity. */
-    if (GetSensitivity(&sensitivity) == LIS3MDL_STATUS_ERROR)
+    if (lis3mdl_get_magnetometerSensitivity(handle,mag_data) != MEMS_SUCCESS)
     {
-        return LIS3MDL_STATUS_ERROR;
+        return MEMS_ERROR;
     }
 
     /* Calculate the data. */
-    pData[0] = (int32_t)(pDataRaw[0] * sensitivity);
-    pData[1] = (int32_t)(pDataRaw[1] * sensitivity);
-    pData[2] = (int32_t)(pDataRaw[2] * sensitivity);
+    mag_data->measurments.x_gauss = (int32_t)(mag_data->measurments.raw_xyz[0] * mag_data->measurments.sensitivity);
+    mag_data->measurments.x_gauss = (int32_t)(mag_data->measurments.raw_xyz[1] * mag_data->measurments.sensitivity);
+    mag_data->measurments.x_gauss = (int32_t)(mag_data->measurments.raw_xyz[2] * mag_data->measurments.sensitivity);
 
-    return LIS3MDL_STATUS_OK;
+    return MEMS_SUCCESS;
 }
 
 /**** IO Read Write Registers functions ****/

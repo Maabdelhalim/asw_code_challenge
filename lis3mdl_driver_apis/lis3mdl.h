@@ -7,10 +7,12 @@
  * @brief   header file for lis3mdl.h driver APIs.
  ********************************************************************************
  */
-#ifndef LIS3MDL_H
-#define LIS3MDL_H
+#ifndef LIS3MDL_H_
+#define LIS3MDL_H_
 
-
+/************************************
+ * INCLUDES
+ ************************************/
 # include <stdint.h>
 # include <lis3mdl_reg.h>
 
@@ -119,10 +121,10 @@ mag_handle_t lis3mdl_magnetometers_handles[NUM_OF_MAG_SENSORS] = {
     }};
 
 /// @brief      lis3mdl magnetometer function that reads full scale configurations
-status_t lis3mdl_get_full_scale_config(const mag_handle_t *handle, lis3mdl_fs_configs_t fs_setVal);
+status_t lis3mdl_get_full_scale_config(const mag_handle_t *handle, lis3mdl_fs_config_t fs_setVal);
 
 /// @brief      lis3mdl magnetometer function that writes full scale configurations
-status_t lis3mdl_set_full_scale_config(const mag_handle_t *handle,lis3mdl_fs_configs_t *fs_newVal);
+status_t lis3mdl_set_full_scale_config(const mag_handle_t *handle,lis3mdl_fs_config_t *fs_newVal);
 
 /// @brief      lis3mdl magnetometer function that validates data output rate
 status_t lis3mdl_validate_outputDataRate(lis3mdl_do_rate_t val);
@@ -149,4 +151,4 @@ status_t lis3mdl_read_reg( mag_read_t read_reg_if, uint8_t mag_read_addr, uint8_
 status_t lis3mdl_write_reg( mag_write_t write_reg_if, uint8_t mag_write_addr, uint8_t reg, uint8_t *pdata, uint16_t len );
 
 
-#endif // LIS3MDL_H
+#endif // LIS3MDL_H_
