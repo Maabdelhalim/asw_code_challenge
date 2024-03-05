@@ -1,4 +1,12 @@
 
+/**
+ ********************************************************************************
+ * @file    lismdl.h
+ * @author  Mahmoud Abdelhalim
+ * @date    05.03.2024
+ * @brief   header file for lis3mdl.h driver APIs.
+ ********************************************************************************
+ */
 #ifndef LIS3MDL_H
 #define LIS3MDL_H
 

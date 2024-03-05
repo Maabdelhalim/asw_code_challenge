@@ -1,4 +1,12 @@
 
+/**
+ ********************************************************************************
+ * @file    lismdl_reg.h
+ * @author  Mahmoud Abdelhalim
+ * @date    05.03.2024
+ * @brief   header file for lis3mdl.h regsiters mapping.
+ ********************************************************************************
+ */
 #ifndef LIS3MDL_REG_H
 #define LIS3MDL_REG_H
 

@@ -1,3 +1,12 @@
+
+/**
+ ********************************************************************************
+ * @file    lismdl.c
+ * @author  Mahmoud Abdelhalim
+ * @date    05.03.2024
+ * @brief   source file for lis3mdl driver APIs definitions and instances.
+ ********************************************************************************
+ */
 # include <lis3mdl.h>
 
 
